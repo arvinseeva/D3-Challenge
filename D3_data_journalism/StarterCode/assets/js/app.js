@@ -359,10 +359,10 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
                     }
                     circlesGroup = renderCircles(circlesGroup, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis);
 
-                    // Update tool tips with new info.
+                    
                     circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
 
-                    // Update circles text with new values.
+                    
                     circletextGroup = renderText(circletextGroup, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis);
 
                 }
