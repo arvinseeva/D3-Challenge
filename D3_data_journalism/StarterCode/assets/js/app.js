@@ -161,5 +161,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
             data.obesity = +data.obesity;
             console.log(data);
         });
+        var xLinearScale = xScale(paperData, chosenXAxis);
 
+        var yLinearScale = yScale(paperData, chosenYAxis);
 
