@@ -49,3 +49,15 @@ function yScale(paperData, chosenYAxis) {
 
     return yLinearScale;
 }
+
+
+function renderXAxes(newXScale, xAxis) {
+    var bottomAxis = d3.axisBottom(newXScale);
+
+    xAxis.transition()
+        .duration(1000)
+        .call(bottomAxis);
+
+    return xAxis;
+}
+
