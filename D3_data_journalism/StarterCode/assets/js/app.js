@@ -114,4 +114,23 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
         var ylabel = "Obesity: "
     }
 
-    
+    var toolTip = d3.tip()
+            .attr("class", "tooltip")
+            .style("background", "black")
+            .style("color", "white")
+            .offset([120, -60])
+            .html(function(d) {
+                if (chosenXAxis === "age") {
+                    // All yAxis tooltip labels presented and formated as %.
+                    // Display Age without format for xAxis.
+                    return (`${d.state}<hr>${xlabel} ${d[chosenXAxis]}<br>${ylabel}${d[chosenYAxis]}%`);
+                  } else if (chosenXAxis !== "poverty" && chosenXAxis !== "age") {
+                    // Display Income in dollars for xAxis.
+                    return (`${d.state}<hr>${xlabel}$${d[chosenXAxis]}<br>${ylabel}${d[chosenYAxis]}%`);
+                  } else {
+                    // Display Poverty as percentage for xAxis.
+                    return (`${d.state}<hr>${xlabel}${d[chosenXAxis]}%<br>${ylabel}${d[chosenYAxis]}%`);
+                  }      
+            });
+        
+        circlesGroup.call(toolTip);
