@@ -81,3 +81,12 @@ function renderCircles(circlesGroup, newXScale, newYScale, chosenXAxis, chosenYA
     return circlesGroup;
 }
 
+function renderText(circletextGroup, newXScale, newYScale, chosenXAxis, chosenYAxis) {
+    circletextGroup.transition()
+        .duration(1000)
+        .attr("x", d => newXScale(d[chosenXAxis]))
+        .attr("y", d => newYScale(d[chosenYAxis]));
+    
+    return circletextGroup;
+}
+
