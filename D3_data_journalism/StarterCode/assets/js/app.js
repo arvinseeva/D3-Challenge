@@ -92,7 +92,7 @@ function renderText(circletextGroup, newXScale, newYScale, chosenXAxis, chosenYA
 
 function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
-    // Conditional for X Axis.
+    
     if (chosenXAxis === "poverty") {
         var xlabel = "Poverty: ";
     }
@@ -103,7 +103,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
         var xlabel = "Age: "
     }
 
-    // Conditional for Y Axis.
+    
     if (chosenYAxis === "healthcare") {
         var ylabel = "Lacks Healthcare: ";
     }
@@ -121,16 +121,32 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
             .offset([120, -60])
             .html(function(d) {
                 if (chosenXAxis === "age") {
-                    // All yAxis tooltip labels presented and formated as %.
-                    // Display Age without format for xAxis.
+
                     return (`${d.state}<hr>${xlabel} ${d[chosenXAxis]}<br>${ylabel}${d[chosenYAxis]}%`);
                   } else if (chosenXAxis !== "poverty" && chosenXAxis !== "age") {
-                    // Display Income in dollars for xAxis.
+  
                     return (`${d.state}<hr>${xlabel}$${d[chosenXAxis]}<br>${ylabel}${d[chosenYAxis]}%`);
                   } else {
-                    // Display Poverty as percentage for xAxis.
+
                     return (`${d.state}<hr>${xlabel}${d[chosenXAxis]}%<br>${ylabel}${d[chosenYAxis]}%`);
                   }      
             });
         
         circlesGroup.call(toolTip);
+
+
+ 
+        circlesGroup
+ 
+            .on("click", function(data) {
+                toolTip.show(data, this);
+            })
+
+            .on("mouseout", function(data) {
+                toolTip.hide(data)
+            });
+
+        return circlesGroup;
+    }
+    
+
