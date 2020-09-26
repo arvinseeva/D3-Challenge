@@ -148,5 +148,18 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
         return circlesGroup;
     }
-    
+
+    d3.csv("assets/data/data.csv")
+        .then(function(paperData) {
+        
+        paperData.forEach(function(data) {
+            data.poverty = +data.poverty;
+            data.healthcare = +data.healthcare;
+            data.age = +data.age;
+            data.income = +data.income;
+            data.smokes = +data.smokes;
+            data.obesity = +data.obesity;
+            console.log(data);
+        });
+
 
