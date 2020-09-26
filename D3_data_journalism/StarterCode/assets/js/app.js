@@ -39,3 +39,13 @@ function xScale(paperData, chosenXAxis) {
 
 }
 
+function yScale(paperData, chosenYAxis) {
+    
+    var yLinearScale = d3.scaleLinear()
+        .domain([d3.min(paperData, d => d[chosenYAxis]) * .8,
+            d3.max(paperData, d => d[chosenYAxis]) * 1.2
+        ])
+        .range([height, 0]);
+
+    return yLinearScale;
+}
