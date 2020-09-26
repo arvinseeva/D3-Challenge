@@ -177,4 +177,14 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
             .classed("y-axis", true)
             .call(leftAxis);
 
-            
+            var circlesGroup = chartGroup.selectAll("circle")
+            .data(paperData)
+            .enter()
+            .append("circle")
+            // .transition()
+            // .duration(1000)
+            .attr("cx", d => xLinearScale(d[chosenXAxis]))
+            .attr("cy", d => yLinearScale(d[chosenYAxis]))
+            .attr("r", "15")
+            .attr("fill", "green")
+            .attr("opacity", ".5");
