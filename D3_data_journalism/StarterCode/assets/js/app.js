@@ -165,3 +165,16 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
         var yLinearScale = yScale(paperData, chosenYAxis);
 
+        var bottomAxis = d3.axisBottom(xLinearScale);
+        var leftAxis = d3.axisLeft(yLinearScale);
+        
+        var xAxis = chartGroup.append("g")
+            .classed("x-axis", true)
+            .attr("transform", `translate(0, ${height})`)
+            .call(bottomAxis);
+
+        var yAxis = chartGroup.append("g")
+            .classed("y-axis", true)
+            .call(leftAxis);
+
+            
