@@ -24,3 +24,6 @@ var svg = d3.select("#scatter")
 var chartGroup = svg.append("g")
 .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
+var chosenXAxis = "poverty";
+var chosenYAxis = "healthcare";
+
