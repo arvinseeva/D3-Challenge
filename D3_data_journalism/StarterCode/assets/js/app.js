@@ -71,3 +71,13 @@ function renderYAxes(newYScale, yAxis) {
     return yAxis;
 }
 
+function renderCircles(circlesGroup, newXScale, newYScale, chosenXAxis, chosenYAxis) {
+
+    circlesGroup.transition()
+        .duration(1000)
+        .attr("cx", d => newXScale(d[chosenXAxis]))
+        .attr("cy", d => newYScale(d[chosenYAxis]));
+
+    return circlesGroup;
+}
+
