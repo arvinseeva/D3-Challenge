@@ -90,3 +90,28 @@ function renderText(circletextGroup, newXScale, newYScale, chosenXAxis, chosenYA
     return circletextGroup;
 }
 
+function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
+
+    // Conditional for X Axis.
+    if (chosenXAxis === "poverty") {
+        var xlabel = "Poverty: ";
+    }
+    else if (chosenXAxis === "income") {
+        var xlabel = "Median Income: "
+    }
+    else {
+        var xlabel = "Age: "
+    }
+
+    // Conditional for Y Axis.
+    if (chosenYAxis === "healthcare") {
+        var ylabel = "Lacks Healthcare: ";
+    }
+    else if (chosenYAxis === "smokes") {
+        var ylabel = "Smokers: "
+    }
+    else {
+        var ylabel = "Obesity: "
+    }
+
+    
