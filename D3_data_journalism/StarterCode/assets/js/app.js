@@ -61,3 +61,13 @@ function renderXAxes(newXScale, xAxis) {
     return xAxis;
 }
 
+function renderYAxes(newYScale, yAxis) {
+    var leftAxis = d3.axisLeft(newYScale);
+
+    yAxis.transition()
+        .duration(1000)
+        .call(leftAxis);
+
+    return yAxis;
+}
+
