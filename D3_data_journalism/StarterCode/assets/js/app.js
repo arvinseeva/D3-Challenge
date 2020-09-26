@@ -177,14 +177,74 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
             .classed("y-axis", true)
             .call(leftAxis);
 
-            var circlesGroup = chartGroup.selectAll("circle")
+         var circlesGroup = chartGroup.selectAll("circle")
             .data(paperData)
             .enter()
             .append("circle")
-            // .transition()
-            // .duration(1000)
+
             .attr("cx", d => xLinearScale(d[chosenXAxis]))
             .attr("cy", d => yLinearScale(d[chosenYAxis]))
             .attr("r", "15")
             .attr("fill", "green")
             .attr("opacity", ".5");
+
+        var circletextGroup = chartGroup.selectAll()
+            .data(paperData)
+            .enter()
+            .append("text")
+            .text(d => (d.abbr))
+            .attr("x", d => xLinearScale(d[chosenXAxis]))
+            .attr("y", d => yLinearScale(d[chosenYAxis]))
+            .style("font-size", "12px")
+            .style("text-anchor", "middle")
+            .style('fill', 'black');
+
+        var labelsGroup = chartGroup.append("g")
+            .attr("transform", `translate(${width / 2}, ${height + 20})`);
+
+        var povertyLabel = labelsGroup.append("text")
+            .attr("x", 0)
+            .attr("y", 20)
+            .attr("value", "poverty") // value to grab for event listener.
+            .classed("active", true)
+            .text("In Poverty (%)");
+
+        var ageLabel = labelsGroup.append("text")
+            .attr("x", 0)
+            .attr("y", 40)
+            .attr("value", "age") // value to grab for event listener.
+            .classed("inactive", true)
+            .text("Age (Median)");
+
+        var incomeLabel = labelsGroup.append("text")
+            .attr("x", 0)
+            .attr("y", 60)
+            .attr("value", "income") // value to grab for event listener.
+            .classed("inactive", true)
+            .text("Household Income (Median)");
+
+        var healthcareLabel = labelsGroup.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("x", (margin.left) * 2.5)
+            .attr("y", 0 - (height - 60))
+            .attr("value", "healthcare") // value to grab for event listener.
+            .classed("active", true)
+            .text("Lacks Healthcare (%)");
+
+        var smokeLabel = labelsGroup.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("x", (margin.left) * 2.5)
+            .attr("y", 0 - (height - 40))
+            .attr("value", "smokes") // value to grab for event listener.
+            .classed("inactive", true)
+            .text("Smokes (%)");
+
+        var obesityLabel = labelsGroup.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("x", (margin.left) * 2.5)
+            .attr("y", 0 - (height - 20))
+            .attr("value", "obesity") // value to grab for event listener.
+            .classed("inactive", true)
+            .text("Obesity (%)");
+
+        var circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
